@@ -5,7 +5,7 @@ import { MyContext } from '../types'
 @InputType()
 class CharacterInput {
   @Field(() => String)
-  name: string = ''
+  name!: string
 }
 
 @Resolver(Character)

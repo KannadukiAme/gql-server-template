@@ -1,22 +1,11 @@
-import { Entity, PrimaryKey, Property } from "@mikro-orm/core"
-import { Field, ID, ObjectType } from "type-graphql"
+import { Entity, Property } from "@mikro-orm/core"
+import { Field, ObjectType } from "type-graphql"
+import { Base } from "./Base"
 
 @ObjectType()
 @Entity()
-export class Character {
-  @Field(() => ID)
-  @PrimaryKey()
-  _id!: string
-
+export class Character extends Base{
   @Field(() => String)
-  @Property({ type: 'date' })
-  createdAt = new Date();
-
-  @Field(() => String)
-  @Property({ type: 'date', onUpdate: () => new Date() })
-  updatedAt = new Date();
-
-  @Field(() => String)
-  @Property({ type: 'text', unique: true })
+  @Property()
   name!: string
 }
